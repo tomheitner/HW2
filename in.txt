@@ -1,0 +1,18 @@
+ADD AhzAvA CoZeVeT 9099 Licud
+ADD SaMi HaMesUmaM 4567 Yemina
+ADD ReeCHy YisHimoTo 3498 Kahol-Lavan
+PRINT RESULT
+ADD TzION BenTzion 0001 Hameshutefet
+PRINT VOTERS
+ADD iSRaeL lObESHViLi 2121 Licud
+PRINT VOTERS
+ADD Meir ShmOsi 0111 Kahol-Lavan
+ADD Meir ShmOsI 0103 Shas
+ADD Meir ShmOsI 0100 Shas
+PRINT RESULT
+ADD NiMrod Katz 9278 Some-Unknown-Party
+ADD AnAT bartzur 1232 HaAvoda
+ADD LEOR ROEL 0402 Licud
+PRINT VOTERS
+PRINT RESULT
+QUIT

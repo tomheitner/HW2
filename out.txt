@@ -1,0 +1,53 @@
+Election Results
+Party | Num. of Voters
+Kahol-Lavan 1
+Yemina 1
+Licud 1
+
+Registered Voters
+ID | Name | Vote
+1 TZION BENTZION Hameshutefet
+3498 REECHY YISHIMOTO Kahol-Lavan
+4567 SAMI HAMESUMAM Yemina
+9099 AHZAVA COZEVET Licud
+
+Registered Voters
+ID | Name | Vote
+1 TZION BENTZION Hameshutefet
+2121 ISRAEL LOBESHVILI Licud
+3498 REECHY YISHIMOTO Kahol-Lavan
+4567 SAMI HAMESUMAM Yemina
+9099 AHZAVA COZEVET Licud
+
+Election Results
+Party | Num. of Voters
+Shas 2
+Hameshutefet 1
+Kahol-Lavan 2
+Yemina 1
+Licud 2
+
+Registered Voters
+ID | Name | Vote
+1 TZION BENTZION Hameshutefet
+100 MEIR SHMOSI Shas
+103 MEIR SHMOSI Shas
+111 MEIR SHMOSI Kahol-Lavan
+402 LEOR ROEL Licud
+1232 ANAT BARTZUR HaAvoda
+2121 ISRAEL LOBESHVILI Licud
+3498 REECHY YISHIMOTO Kahol-Lavan
+4567 SAMI HAMESUMAM Yemina
+9099 AHZAVA COZEVET Licud
+9278 NIMROD KATZ Some-Unknown-Party
+
+Election Results
+Party | Num. of Voters
+HaAvoda 1
+Some-Unknown-Party 1
+Shas 2
+Hameshutefet 1
+Kahol-Lavan 2
+Yemina 1
+Licud 3
+
