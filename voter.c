@@ -55,6 +55,31 @@ static Voter* VoterList = NULL;
 */
 void AddVoter(char* pName, char* pSurname, int ID, char* pParty)
 {
+    char *name = (char*) malloc(strlen(pName) + strlen(pSurname) + 1);
+    char *cName = (char*)malloc(strlen(pName) + strlen(pSurname) + 1);
+
+    if (name == NULL || cName == NULL) //check if any malloc failed
+    {
+        printf("malloc has failed in AddVoters");
+        return;
+    }
+
+    strcpy(name, s1);
+    strcat(name, s2);
+
+    char chr;
+    while (name[i]) 
+    {
+        chr = toupper(word[i]);
+        strcat(cName, chr);
+        i++;
+    }
+
+    Voter *newbie = { cName, pParty, ID, VoterList };
+    VoterList = newbie;
+
+    free(name);
+    free(newbie);
 }
 
 
@@ -69,6 +94,19 @@ void AddVoter(char* pName, char* pSurname, int ID, char* pParty)
 */
 void FreeVoters()
 {
+    Voter *next = (Voter*) malloc(sizeof(Voter*));
+    if (name == NULL) //check if malloc failed
+    {
+        printf("malloc has failed in FreeVoters");
+        return;
+    }
+    while (VoterList != NULL)
+    {
+        next = VoterList->pNext;
+        free(VoterList);
+        VoterList = next;
+    }
+    free(next);
 }
 
 
