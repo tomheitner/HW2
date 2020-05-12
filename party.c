@@ -61,7 +61,7 @@ char* AddVote(char* pPartyName)
 {
     Party* newParty; 
     Party* tmp;
-    int i;
+    size_t i;
 
     tmp = PartyList;
     
@@ -92,9 +92,9 @@ char* AddVote(char* pPartyName)
     if (newParty == NULL)
     {
         printf("malloc failed on newParty");
-        return 1;
+        return NULL;
     }
-    
+
     /* 
     adding new party to the list and changing head to point to this new party
     */
@@ -103,6 +103,7 @@ char* AddVote(char* pPartyName)
     newParty->pNext = PartyList;
     PartyList = newParty;
 
+    return newParty->Party;
 }
 
 
