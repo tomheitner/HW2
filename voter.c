@@ -55,31 +55,49 @@ static Voter* VoterList = NULL;
 */
 void AddVoter(char* pName, char* pSurname, int ID, char* pParty)
 {
-    char *name = (char*) malloc(strlen(pName) + strlen(pSurname) + 1);
-    char *cName = (char*)malloc(strlen(pName) + strlen(pSurname) + 1);
-
-    if (name == NULL || cName == NULL) //check if any malloc failed
+    
+    int i = 0;
+    Voter* newbie;
+    
+    newbie = malloc(sizeof(Voter));
+    if (newbie == NULL) //check if any malloc failed
     {
         printf("malloc has failed in AddVoters");
         return;
     }
-
-    strcpy(name, s1);
-    strcat(name, s2);
-
-    char chr;
-    while (name[i]) 
+    newbie->pName = malloc(strlen(pName) + strlen(pSurname) + 2);
+    newbie->pParty = malloc(strlen(pParty) + 1);
+    if (newbie->pParty == NULL || newbie->pName == NULL) //check if any malloc failed
     {
-        chr = toupper(word[i]);
-        strcat(cName, chr);
+        printf("malloc has failed in AddVoters");
+        return;
+    }
+   
+   
+
+    //creating the full name string
+    char space[2] = {' ','\0'};
+    strcpy(newbie->pName, pName); 
+    strcat(newbie->pName, space);
+    strcat(newbie->pName, pSurname);
+
+ 
+    while (newbie->pName[i]) 
+    {
+        newbie->pName[i] = toupper(newbie->pName[i]);
         i++;
     }
+    
+   
+    //Voter* newbie = { cName, pParty, ID, VoterList }
 
-    Voter *newbie = { cName, pParty, ID, VoterList };
+
+    strcpy(newbie->pParty, pParty);
+    newbie->ID = ID;
+    newbie->pNext = VoterList;
+   
     VoterList = newbie;
 
-    free(name);
-    free(newbie);
 }
 
 
@@ -94,8 +112,8 @@ void AddVoter(char* pName, char* pSurname, int ID, char* pParty)
 */
 void FreeVoters()
 {
-    Voter *next = (Voter*) malloc(sizeof(Voter*));
-    if (name == NULL) //check if malloc failed
+    Voter *next = (Voter*) malloc(sizeof(Voter));
+    if (next == NULL) //check if malloc failed
     {
         printf("malloc has failed in FreeVoters");
         return;
