@@ -59,6 +59,50 @@ static Party* PartyList = NULL;
 */
 char* AddVote(char* pPartyName)
 {
+    Party* newParty; 
+    Party* tmp;
+    int i;
+
+    tmp = PartyList;
+    
+    /* 
+    iterating through the PartyList to see if the PartyName already in, and update number of voters if yes.
+    */
+    while (tmp != NULL) 
+    {
+        if (!strcmp(tmp->Party, pPartyName))
+        {
+            tmp->NumVoters++; 
+            return tmp->Party;
+        }
+        tmp = tmp->pNext;
+    }
+
+    //checks if party name is leggal  
+    for (i = 1; i < strlen(pPartyName); i++) {
+        
+        if ((pPartyName[i - 1] == '-') && (pPartyName[i] >= 'a') && (pPartyName[i] <= 'z')) //after '-' a lowercase letter
+        {
+            PrintError(pPartyName);
+            return NULL;
+        }  
+    }
+    
+    newParty = malloc(sizeof(Party));
+    if (newParty == NULL)
+    {
+        printf("malloc failed on newParty");
+        return 1;
+    }
+    
+    /* 
+    adding new party to the list and changing head to point to this new party
+    */
+    newParty->NumVoters = 1;
+    strcpy(newParty->Party,pPartyName);
+    newParty->pNext = PartyList;
+    PartyList = newParty;
+
 }
 
 
@@ -73,6 +117,14 @@ char* AddVote(char* pPartyName)
 */
 void FreeParties()
 {
+    Party* tmp;
+
+    while (PartyList != NULL)
+    {
+        tmp = PartyList;
+        PartyList = PartyList->pNext;
+        free(tmp);
+    }
 }
 
 
