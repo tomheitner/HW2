@@ -60,7 +60,7 @@ static Party* PartyList = NULL;
 char* AddVote(char* pPartyName)
 {
     Party* newParty; 
-    Party* tmp;
+    Party* tmp; //used to interate through the list
     size_t i;
 
     tmp = PartyList;
@@ -78,7 +78,9 @@ char* AddVote(char* pPartyName)
         tmp = tmp->pNext;
     }
 
-    //checks if party name is leggal  
+    /*
+    checks if party name is leggal  
+    */
     for (i = 1; i < strlen(pPartyName); i++) {
         
         if ((pPartyName[i - 1] == '-') && (pPartyName[i] >= 'a') && (pPartyName[i] <= 'z')) //after '-' a lowercase letter
@@ -87,7 +89,9 @@ char* AddVote(char* pPartyName)
             return NULL;
         }  
     }
-    
+    /*
+    allocating memory space for the new party + checking if malloc failed
+    */
     newParty = malloc(sizeof(Party));
     if (newParty == NULL)
     {
@@ -118,8 +122,11 @@ char* AddVote(char* pPartyName)
 */
 void FreeParties()
 {
-    Party* tmp;
+    Party* tmp; //Used to iterate the list
 
+    /*
+    The loop iterates through the list and frees each node
+    */
     while (PartyList != NULL)
     {
         tmp = PartyList;
@@ -146,8 +153,8 @@ void PrintResult()
     printf("Party | Num. of Voters\n");
 
     /*
-     * Iterate the party list and print the current number of voters for each party
-     */
+    Iterate the party list and print the current number of voters for each party
+    */
     for (pParty = PartyList; pParty; pParty = pParty->pNext)
         printf("%s %d\n", pParty->Party, pParty->NumVoters);
     printf("\n");
