@@ -57,17 +57,23 @@ void AddVoter(char* pName, char* pSurname, int ID, char* pParty)
 {
     
     int i;
-    Voter* newbie;
-    Voter* tmp;
+    Voter* newbie; // new voter node
+    Voter* tmp;// tmp pointer for iterating through the voters list 
     
+    /* allocating a new voter node called newbie and checking if malloc failed*/
     newbie = malloc(sizeof(Voter));
-    if (newbie == NULL) //check if any malloc failed
+    if (newbie == NULL)
     {
         printf("malloc has failed in AddVoters");
         exit(-1);
     }
-    newbie->pName = malloc(strlen(pName) + strlen(pSurname) + 2);
-    if (newbie->pName == NULL) //check if any malloc failed
+
+
+    /* allocating memory for the new voter name,
+    includes private name, surename,space and '/0' .
+    also checking if malloc failed*/
+    newbie->pName = malloc(strlen(pName) + strlen(pSurname) + 2); // 
+    if (newbie->pName == NULL) 
     {
         printf("malloc has failed in AddVoters");
         free(newbie);
@@ -76,12 +82,14 @@ void AddVoter(char* pName, char* pSurname, int ID, char* pParty)
    
    
 
-    //creating the full name string
+    /*creating the full name string inside the name field in the new voter node , newbie. 
+    the pattern is 'name pSureName'.*/
     char space[2] = {' ','\0'};
     strcpy(newbie->pName, pName); 
     strcat(newbie->pName, space);
     strcat(newbie->pName, pSurname);
 
+    /*making the full name letters, uppercase letters*/
     i = 0;
     while (newbie->pName[i]) 
     {
@@ -92,8 +100,9 @@ void AddVoter(char* pName, char* pSurname, int ID, char* pParty)
     newbie->pParty = pParty;
     newbie->ID = ID;
    
-    //sorted insertion into voterList
-    if (VoterList == NULL || VoterList->ID >= newbie->ID) { //handling the cases that require insertion to the head of the list
+    /* sorted insertion into voterList
+    handling the cases that require insertion to the head of the list or when the list is empty */
+    if (VoterList == NULL || VoterList->ID >= newbie->ID) { 
         newbie->pNext = VoterList;
         VoterList = newbie;
     }
