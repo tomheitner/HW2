@@ -92,7 +92,7 @@ char* AddVote(char* pPartyName)
     if (newParty == NULL)
     {
         printf("malloc failed on newParty");
-        return NULL;
+        exit(-1);
     }
 
     /* 
