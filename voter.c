@@ -56,21 +56,22 @@ static Voter* VoterList = NULL;
 void AddVoter(char* pName, char* pSurname, int ID, char* pParty)
 {
     
-    int i = 0;
+    int i;
     Voter* newbie;
+    Voter* tmp;
     
     newbie = malloc(sizeof(Voter));
     if (newbie == NULL) //check if any malloc failed
     {
         printf("malloc has failed in AddVoters");
-        return;
+        exit(-1);
     }
     newbie->pName = malloc(strlen(pName) + strlen(pSurname) + 2);
-    newbie->pParty = malloc(strlen(pParty) + 1);
-    if (newbie->pParty == NULL || newbie->pName == NULL) //check if any malloc failed
+    if (newbie->pName == NULL) //check if any malloc failed
     {
         printf("malloc has failed in AddVoters");
-        return;
+        free(newbie);
+        exit(-1);
     }
    
    
@@ -81,23 +82,30 @@ void AddVoter(char* pName, char* pSurname, int ID, char* pParty)
     strcat(newbie->pName, space);
     strcat(newbie->pName, pSurname);
 
- 
+    i = 0;
     while (newbie->pName[i]) 
     {
         newbie->pName[i] = toupper(newbie->pName[i]);
         i++;
     }
-    
-   
-    //Voter* newbie = { cName, pParty, ID, VoterList }
 
-
-    strcpy(newbie->pParty, pParty);
+    newbie->pParty = pParty;
     newbie->ID = ID;
-    newbie->pNext = VoterList;
    
-    VoterList = newbie;
-
+    //sorted insertion into voterList
+    if (VoterList == NULL || VoterList->ID >= newbie->ID) { //handling the cases that require insertion to the head of the list
+        newbie->pNext = VoterList;
+        VoterList = newbie;
+    }
+    else {
+        tmp = VoterList;
+        while (tmp->pNext != NULL && tmp->pNext->ID < newbie->ID) {
+            tmp = tmp->pNext;
+        }
+        newbie->pNext = tmp->pNext;
+        tmp->pNext = newbie;
+    }
+    
 }
 
 
